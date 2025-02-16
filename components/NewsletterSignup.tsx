@@ -64,7 +64,7 @@ const NewsletterSignup = () => {
         animate={{ opacity: 1, y: 0 }}
       >
         <p className="text-2xl text-[#fca311]">Thank you for joining our waitlist!</p>
-        <p className="mt-4 text-[#e5e5e5]">We'll keep you updated on our launch.</p>
+        <p className="mt-4 text-[#e5e5e5]">We&apos;ll keep you updated on our launch.</p>
       </motion.div>
     )
   }
