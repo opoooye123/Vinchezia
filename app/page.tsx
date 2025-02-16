@@ -1,10 +1,11 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import AnimatedText from "../components/AnimatedText"
-import AnimatedByLine from "../components/AnimatedByLine"
-import SocialLinks from "../components/SocialLinks"
-import NewsletterSignup from "../components/NewsletterSignup"
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import AnimatedText from "../components/AnimatedText";
+import AnimatedByLine from "../components/AnimatedByLine";
+import SocialLinks from "../components/SocialLinks";
+import NewsletterSignup from "../components/NewsletterSignup";
 
 export default function Home() {
   return (
@@ -46,10 +47,26 @@ export default function Home() {
 
       <BackgroundAnimation />
     </div>
-  )
+  );
 }
 
 const BackgroundAnimation = () => {
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    // Ensure this code only runs in the browser
+    if (typeof window !== "undefined") {
+      setDimensions({ width: window.innerWidth, height: window.innerHeight });
+
+      const handleResize = () => {
+        setDimensions({ width: window.innerWidth, height: window.innerHeight });
+      };
+
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []);
+
   return (
     <div className="absolute inset-0 -z-10 overflow-hidden">
       {[...Array(20)].map((_, i) => (
@@ -57,13 +74,13 @@ const BackgroundAnimation = () => {
           key={i}
           className="absolute rounded-full bg-[#fca311]"
           initial={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
+            x: Math.random() * dimensions.width,
+            y: Math.random() * dimensions.height,
             scale: Math.random() * 0.5 + 0.5,
           }}
           animate={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
+            x: Math.random() * dimensions.width,
+            y: Math.random() * dimensions.height,
             scale: Math.random() * 0.5 + 0.5,
           }}
           transition={{
@@ -79,6 +96,5 @@ const BackgroundAnimation = () => {
         />
       ))}
     </div>
-  )
-}
-
+  );
+};
