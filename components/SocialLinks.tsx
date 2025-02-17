@@ -3,9 +3,9 @@ import { Instagram, Facebook, Twitter } from "lucide-react"
 
 const SocialLinks = () => {
   const links = [
-    { icon: Instagram, href: "https://instagram.com" },
+    { icon: Instagram, href: "https://www.instagram.com/vinchenziang/" },
     { icon: Facebook, href: "https://facebook.com" },
-    { icon: Twitter, href: "https://twitter.com" },
+    { icon: Twitter, href: "https://x.com/Vinchenziang" },
   ]
 
   return (

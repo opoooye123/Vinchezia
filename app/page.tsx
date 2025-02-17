@@ -98,3 +98,4 @@ const BackgroundAnimation = () => {
     </div>
   );
 };
+
